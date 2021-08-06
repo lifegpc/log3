@@ -19,7 +19,10 @@ def config():
     stderr = logging.StreamHandler()
     # fmt = '[%(asctime)s %(filename)18s] %(levelname)-7s - %(message)7s'
     date_fmt = '%Y-%m-%d %H:%M:%S'
-    formatter = logging.Formatter(fmt, datefmt=date_fmt)
+    try:
+        formatter = logging.Formatter(fmt, datefmt=date_fmt)
+    except:
+        formatter = logging.Formatter(datefmt=date_fmt)
     stderr.setFormatter(fmt)
     logger.addHandler(stderr)
     logger.setLevel(logging.WARNING)
